@@ -20,6 +20,7 @@ const Account = () => {
     console.log(`handleChange ${event.target.value}`);
     deposit = Number(event.target.value);
   };
+  
   const handleSubmit = () => {
     let newTotal = isDeposit ? deposit + totalState: totalState - deposit;
     if (newTotal < 0){
@@ -29,11 +30,13 @@ const Account = () => {
     setTotalState(newTotal)};
     event.preventDefault();
   };
+  
   const handleModeSelect = (event) => {
     setAtmMode(event.target.value);
     if(event.target.value === "Deposit") setIsDeposit(true);
     if(event.target.value === "Cash Back") setIsDeposit(false);
   };
+  
   return (
     <form onSubmit={handleSubmit}>
       <select onChange={(e) => handleModeSelect(e)} name="mode" id="mode-select">
